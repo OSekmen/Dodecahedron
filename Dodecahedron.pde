@@ -40,6 +40,9 @@ Arm arm5;
 
 Chaser chaser1;
 Chaser chaser2;
+Chaser chaser3;
+Chaser chaser4;
+Chaser chaser5;
 
 PeasyCam cam;
 
@@ -71,7 +74,19 @@ void setup() {
   arm4 = new Arm(Pos4, #0000FF);
   arm5 = new Arm(Pos5, #FF00FF);
 
-  chaser1 = new Chaser(5);
+  chaser1 = new Chaser(0,0,5);
+  chaser2 = new Chaser(0,1,5);
+  chaser3 = new Chaser(0,2,5);
+  chaser4 = new Chaser(0,3,5);
+  chaser5 = new Chaser(0,4,5);
+  
+  chaser1 = new Chaser(0,0,5,color(10,255,255));
+  chaser2 = new Chaser(0,1,5,color(50,255,255));
+  chaser3 = new Chaser(0,2,5,color(100,255,255));
+  chaser4 = new Chaser(0,3,5,color(150,255,255));
+  chaser5 = new Chaser(0,4,5,color(200,255,255));
+  
+  
   leds = new Led[240];
   for (int i=0; i<5; i++) {
     for (int j=0; j<2; j++) {
@@ -99,9 +114,16 @@ void draw() {
   arm5.showArm();
 
   chaser1.show();
+  chaser2.show();
+  chaser3.show();
+  chaser4.show();
+  chaser5.show();
 
   cam.beginHUD();
   text(chaser1.Pos,10,10);
+  text(chaser1.vorigeIndex,10,25);
+  text(chaser1.Pos%8-1,10,40);
+  text(chaser1.ledHis.get(chaser1.ledHis.size()-1),10,55);
   cam.endHUD();
 
   if (millis() - prevTime >1000) {
@@ -116,7 +138,15 @@ void draw() {
 void keyPressed() {
   if (keyCode == UP) {
     chaser1.Pos +=1;
+    chaser2.Pos +=1;
+    chaser3.Pos +=1;
+    chaser4.Pos +=1;
+    chaser5.Pos +=1;
     chaser1.update();
+    chaser2.update();
+    chaser3.update();
+    chaser4.update();
+    chaser5.update();
   }
   if (keyCode == DOWN) {
     chaser1.Pos -= 1;
