@@ -71,8 +71,7 @@ void setup() {
   arm4 = new Arm(Pos4, #0000FF);
   arm5 = new Arm(Pos5, #FF00FF);
 
-  chaser1 = new Chaser( 0, 0,5,1000);
-  chaser2 = new Chaser( 0, 3,5,1000);
+  chaser1 = new Chaser(5);
   leds = new Led[240];
   for (int i=0; i<5; i++) {
     for (int j=0; j<2; j++) {
@@ -83,13 +82,10 @@ void setup() {
       ledAssign(posArray[i][j-1], posArray[i][j], j*8+(i*48));
     }
   }
-  chaser1.update();
- // chaser1.update();
+  //
 }
 
 void draw() {
-  int ledsOn=0;
-  int ledsOff=0;
   time = millis();
   background(0);
   scale(1, -1, -1);
@@ -102,19 +98,14 @@ void draw() {
   arm4.showArm();
   arm5.showArm();
 
-
   chaser1.show();
-  //chaser2.show();
 
   cam.beginHUD();
   text(chaser1.Pos,10,10);
-  text(chaser1.prevPos,10,30);
   cam.endHUD();
 
   if (millis() - prevTime >1000) {
 
-    // println(chaser1.Pos[0], chaser1.Pos[1], chaser1.Pos[2]);
-    //chaser1.update();
     counter++;
     if (counter>=240) {
       counter=0;
@@ -124,10 +115,12 @@ void draw() {
 }
 void keyPressed() {
   if (keyCode == UP) {
+    chaser1.Pos +=1;
     chaser1.update();
   }
   if (keyCode == DOWN) {
-    chaser2.update();
+    chaser1.Pos -= 1;
+    chaser1.update();
   }
   if (keyCode == '0') {
   }
