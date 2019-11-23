@@ -35,6 +35,7 @@ class Chaser {
     vorigeIndex = ledHis.get(ledHis.size()-1);
     ledHis.append(Pos);
     if (Pos%8 == 7) {
+      
       if (vorigeIndex%8 == Pos%8-1) {
         switch(Pos%48) {
         case 7:
@@ -54,22 +55,22 @@ class Chaser {
           Pos=87+(48*arm)-1;
           break;
         }
-      }/* else if (vorigeIndex%8 == Pos%8-1) {
+      } else if (vorigeIndex%8 == Pos%8-1) {////STOPPED HERE, POSITIE VAN IF NIET GOED
         switch(Pos%48) {
-        case 7:
+        case 0:
           Pos=(48)+(48*arm)-1;
           println(arm, "test");
           break;
-        case 15:
+        case 8:
           Pos=24+(48*arm)-1;
           break;
-        case 31:
+        case 24:
           Pos=64+(48*arm)-1;
           break;
-        case 39:
+        case 32:
           Pos=239+(48*arm)-1;
           break;
-        case 47:
+        case 40:
           Pos=87+(48*arm)-1;
           break;
         }
