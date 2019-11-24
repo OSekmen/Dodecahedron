@@ -73,21 +73,15 @@ void setup() {
   arm3 = new Arm(Pos3, #00FF00);
   arm4 = new Arm(Pos4, #0000FF);
   arm5 = new Arm(Pos5, #FF00FF);
-
-  chaser1 = new Chaser(0, 0, 5);
-  chaser2 = new Chaser(0, 1, 5);
-  chaser3 = new Chaser(0, 2, 5);
-  chaser4 = new Chaser(0, 3, 5);
-  chaser5 = new Chaser(0, 4, 5);
-
+ // /*
   chaser1 = new Chaser(0, 0, 5, color(10, 255, 255));
-  chaser2 = new Chaser(0, 1, 5, color(50, 255, 255));
-  chaser3 = new Chaser(0, 2, 5, color(100, 255, 255));
-  chaser4 = new Chaser(0, 3, 5, color(150, 255, 255));
-  chaser5 = new Chaser(0, 4, 5, color(200, 255, 255));
+   chaser2 = new Chaser(0, 1, 5, color(50, 255, 255));
+   chaser3 = new Chaser(0, 2, 5, color(100, 255, 255));
+   chaser4 = new Chaser(0, 3, 5, color(150, 255, 255));
+   chaser5 = new Chaser(0, 4, 5, color(200, 255, 255));
+  // */
 
-
-  leds = new Led[240];
+    leds = new Led[240];
   for (int i=0; i<5; i++) {
     for (int j=0; j<2; j++) {
       ledAssign(posArray[i][j], posArray[i][j+1], j*8+(i*48));
@@ -97,7 +91,6 @@ void setup() {
       ledAssign(posArray[i][j-1], posArray[i][j], j*8+(i*48));
     }
   }
-  //
 }
 
 void draw() {
@@ -112,63 +105,45 @@ void draw() {
   arm3.showArm();
   arm4.showArm();
   arm5.showArm();
-
+  
+  ///*
+   cam.beginHUD();
+   text(chaser1.Pos, 10, 10);
+   text(chaser1.vorigeIndex, 10, 25);
+   text(chaser1.dir, 10, 40);
+   //text(chaser1.ledHis.get(chaser1.ledHis.size()-1), 10, 55);
+   cam.endHUD();
   chaser1.show();
-  //chaser2.show();
-  //chaser3.show();
-  //chaser4.show();
-  //chaser5.show();
+  chaser2.show();
+  chaser3.show();
+  chaser4.show();
+  chaser5.show();
 
-  cam.beginHUD();
-  text(chaser1.Pos, 10, 10);
-  text(chaser1.vorigeIndex, 10, 25);
-  text(chaser1.dir, 10, 40);
-  //text(chaser1.ledHis.get(chaser1.ledHis.size()-1), 10, 55);
-  cam.endHUD();
-
-  if (millis() - prevTime >1000) {
-
-    counter++;
-    if (counter>=240) {
-      counter=0;
-    }
-    prevTime = millis();
-  }
+  chaser1.update(10);
+  chaser2.update(20);
+  chaser3.update(30);
+  chaser4.update(40);
+  chaser5.update(50);
+ // */
 }
 void keyPressed() {
   if (keyCode == UP) {
-    chaser1.Pos +=chaser1.dir;
-    //chaser2.Pos +=chaser2.dir;
-    //chaser3.Pos +=chaser3.dir;
-    //chaser4.Pos +=chaser4.dir;
-    //chaser5.Pos +=chaser5.dir;
-    
-    chaser1.update();
-    //chaser2.update();
-    //chaser3.update();
-    //chaser4.update();
-    //chaser5.update();
+
+    chaser1.update(0);
   }
   if (keyCode == DOWN) {
-    chaser1.Pos -=chaser1.dir;
-    //chaser2.Pos -=chaser2.dir;
-    //chaser3.Pos -=chaser3.dir;
-    //chaser4.Pos -=chaser4.dir;
-    //chaser5.Pos -=chaser5.dir;
 
-    chaser1.update();
-    //chaser2.update();
-    //chaser3.update();
-    //chaser4.update();
-    //chaser5.update();
+    chaser1.dir *=-1;
+    chaser1.update(0);
   }
+
   if (keyCode == '0') {
-    if(chaser1.Pos%8 != 0){
-    chaser1.Pos-=chaser1.Pos%8;
-    }else{
+    if (chaser1.Pos%8 != 0) {
+      chaser1.Pos-=chaser1.Pos%8;
+    } else {
       chaser1.Pos-=8;
     }
-    chaser1.update();
+    chaser1.update(0);
   }
 }
 void axis() {
