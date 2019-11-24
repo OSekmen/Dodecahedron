@@ -3,7 +3,7 @@ int time;
 int prevTime=-10000;
 
 int counter;
-
+int aantaalChasers = 6;
 
 float phi = (1+sqrt(5))/2;
 
@@ -38,11 +38,6 @@ Arm arm3;
 Arm arm4;
 Arm arm5;
 
-Chaser chaser1;
-Chaser chaser2;
-Chaser chaser3;
-Chaser chaser4;
-Chaser chaser5;
 
 Chaser[] chasers;
 
@@ -50,8 +45,9 @@ PeasyCam cam;
 
 void setup() {
   size(1200, 800, P3D);
+  
   //smooth(0);
-  colorMode(HSB, 240);
+  colorMode(HSB, 255);
   cam = new PeasyCam(this, width/2, height/2, 0, 50);
   cam.setMinimumDistance(200);
   cam.setMaximumDistance(700);
@@ -84,10 +80,10 @@ void setup() {
    chaser5 = new Chaser(0, 4, 5, color(200, 255, 255));
    */
 
-  chasers = new Chaser[5];
+  chasers = new Chaser[aantaalChasers];
 
-  for (int i=0; i<5; i++) {
-    chasers[i] = new Chaser(i%5, i%4, int(random(0, 4)), color(random(0, 255), 255, 255));
+  for (int i=0; i<aantaalChasers; i++) {
+    chasers[i] = new Chaser(int(random(0, 7)), int(random(0, 5)), int(random(5, 15)), int(random(0, 255)));
   }
 
   leds = new Led[240];
@@ -122,44 +118,13 @@ void draw() {
    text(chaser1.dir, 10, 40);
    //text(chaser1.ledHis.get(chaser1.ledHis.size()-1), 10, 55);
    cam.endHUD();
-   chaser1.show();
-   chaser2.show();
-   chaser3.show();
-   chaser4.show();
-   chaser5.show();
-   
-   chaser1.update(10);
-   chaser2.update(20);
-   chaser3.update(30);
-   chaser4.update(40);
-   chaser5.update(50);
    */
-   
-   for(int i=0;i<5;i++){
+  for (int i=0; i<aantaalChasers; i++) {
     chasers[i].show(); 
     chasers[i].update(50);
-   }
-}
-void keyPressed() {
-  if (keyCode == UP) {
-
-    chaser1.update(0);
-  }
-  if (keyCode == DOWN) {
-
-    chaser1.dir *=-1;
-    chaser1.update(0);
-  }
-
-  if (keyCode == '0') {
-    if (chaser1.Pos%8 != 0) {
-      chaser1.Pos-=chaser1.Pos%8;
-    } else {
-      chaser1.Pos-=8;
-    }
-    chaser1.update(0);
   }
 }
+
 void axis() {
   stroke(#FF0000);
   line(-100, -5, 0, -100, 5, 0);
@@ -191,3 +156,26 @@ void ledAssign(float pos1[], float pos2[], int ledNumBeg) {
     leds[(ledNumBeg)+i]= new Led( posTemp);
   }
 }
+
+/*
+void keyPressed() {
+ if (keyCode == UP) {
+ 
+ chaser1.update(0);
+ }
+ if (keyCode == DOWN) {
+ 
+ chaser1.dir *=-1;
+ chaser1.update(0);
+ }
+ 
+ if (keyCode == '0') {
+ if (chaser1.Pos%8 != 0) {
+ chaser1.Pos-=chaser1.Pos%8;
+ } else {
+ chaser1.Pos-=8;
+ }
+ chaser1.update(0);
+ }
+ }
+ */

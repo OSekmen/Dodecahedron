@@ -12,7 +12,7 @@ class Arm {
   }
 
   void showArm() {
-    stroke(c);
+    stroke(c,50);
     for (int i=0; i<6; i++) {
       if (i<5) {
         line(Pos[i][0], Pos[i][1], Pos[i][2], 

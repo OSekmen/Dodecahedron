@@ -1,5 +1,6 @@
 class Chaser {
   int Pos;
+  int brightness;
   int prevTime=1000;
   int dir=1;
   int vorigeIndex;
@@ -7,17 +8,18 @@ class Chaser {
   int tak;
   int arm;
   color c;
+  int h;
   color[] ledMem;
   IntList ledHis;
 
 
 
 
-  Chaser(int tak, int arm, int size, color c) {
+  Chaser(int tak, int arm, int size, int h) {
     this.size = size;
     this.tak = tak;
     this.arm = arm;
-    this.c = c;
+    this.h = h;
     this.Pos= (8*tak)+(48*arm);
     ledMem = new color[240];
     ledHis = new IntList();
@@ -93,7 +95,8 @@ class Chaser {
           }
         }
       }
-
+      
+      
       if (ledHis.size() > size) {
         ledHis.remove(0);
         ledMem[ledHis.get(0)%240] = 0;
@@ -106,6 +109,7 @@ class Chaser {
   void show() {
     for (int i=0; i<size; i++) {
       if (ledHis.size() > i) {
+        this.c = color(h,255,255,i*(255/size));
         ledHMem[ledHis.get(i)%240]=c;
         ledMem[ledHis.get(i)%240]=c;
         leds[ledHis.get(i)%240].showLed(c);
