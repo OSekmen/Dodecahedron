@@ -27,12 +27,10 @@ class Chaser {
     if (random(0, 100)>50) {
       this.Pos+= right-1-this.Pos%48;
       this.dir= dir1;
-      println("right");
     } else {
       this.Pos+= left-1-this.Pos%48;
 
       this.dir=dir2;
-      println("left");
     }
     this.Pos = this.Pos%240;
   }

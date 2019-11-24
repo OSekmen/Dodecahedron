@@ -44,6 +44,8 @@ Chaser chaser3;
 Chaser chaser4;
 Chaser chaser5;
 
+Chaser[] chasers;
+
 PeasyCam cam;
 
 void setup() {
@@ -73,15 +75,22 @@ void setup() {
   arm3 = new Arm(Pos3, #00FF00);
   arm4 = new Arm(Pos4, #0000FF);
   arm5 = new Arm(Pos5, #FF00FF);
- // /*
+
+  /*
   chaser1 = new Chaser(0, 0, 5, color(10, 255, 255));
    chaser2 = new Chaser(0, 1, 5, color(50, 255, 255));
    chaser3 = new Chaser(0, 2, 5, color(100, 255, 255));
    chaser4 = new Chaser(0, 3, 5, color(150, 255, 255));
    chaser5 = new Chaser(0, 4, 5, color(200, 255, 255));
-  // */
+   */
 
-    leds = new Led[240];
+  chasers = new Chaser[5];
+
+  for (int i=0; i<5; i++) {
+    chasers[i] = new Chaser(i%5, i%4, int(random(0, 4)), color(random(0, 255), 255, 255));
+  }
+
+  leds = new Led[240];
   for (int i=0; i<5; i++) {
     for (int j=0; j<2; j++) {
       ledAssign(posArray[i][j], posArray[i][j+1], j*8+(i*48));
@@ -105,26 +114,31 @@ void draw() {
   arm3.showArm();
   arm4.showArm();
   arm5.showArm();
-  
-  ///*
+
+  /*
    cam.beginHUD();
    text(chaser1.Pos, 10, 10);
    text(chaser1.vorigeIndex, 10, 25);
    text(chaser1.dir, 10, 40);
    //text(chaser1.ledHis.get(chaser1.ledHis.size()-1), 10, 55);
    cam.endHUD();
-  chaser1.show();
-  chaser2.show();
-  chaser3.show();
-  chaser4.show();
-  chaser5.show();
-
-  chaser1.update(10);
-  chaser2.update(20);
-  chaser3.update(30);
-  chaser4.update(40);
-  chaser5.update(50);
- // */
+   chaser1.show();
+   chaser2.show();
+   chaser3.show();
+   chaser4.show();
+   chaser5.show();
+   
+   chaser1.update(10);
+   chaser2.update(20);
+   chaser3.update(30);
+   chaser4.update(40);
+   chaser5.update(50);
+   */
+   
+   for(int i=0;i<5;i++){
+    chasers[i].show(); 
+    chasers[i].update(50);
+   }
 }
 void keyPressed() {
   if (keyCode == UP) {
