@@ -1,5 +1,6 @@
 class Chaser {
   int Pos=0;
+  int dir=1;
   int vorigeIndex;
   int size;
   int tak;
@@ -18,63 +19,85 @@ class Chaser {
     ledHis = new IntList();
     ledHis.append(Pos);
   }
-  
-  Chaser(int tak, int arm, int size,color c) {
+
+  Chaser(int tak, int arm, int size, color c) {
     this.size = size;
     this.tak = tak;
     this.arm = arm;
     this.c = c;
-    Pos= (8*tak)+(48*arm);
+    this.Pos= (8*tak)+(48*arm);
     ledMem = new color[240];
     ledHis = new IntList();
     ledHis.append(Pos);
   }
-
+  void choose(int right, int left, int dir1, int dir2) {
+    if (random(0, 100)>50) {
+      this.Pos+= right-1-this.Pos%48;
+      this.dir= dir1;
+      println("right");
+    } else {
+      this.Pos+= left-1-this.Pos%48;
+      this.dir=dir2;
+      println("left");
+    }
+  }
   void update() { 
 
     vorigeIndex = ledHis.get(ledHis.size()-1);
     ledHis.append(Pos);
+    //case 23:
+    //  choose(15, 24, -1, 1);
+    //  break;
+
+    //case 16:
+    //  choose(224, 223, 1, -1);
+    //  Pos+=1;
+    //  break;
     if (Pos%8 == 7) {
-      
       if (vorigeIndex%8 == Pos%8-1) {
         switch(Pos%48) {
         case 7:
-          Pos=(48)+(48*arm)-1;
-          println(arm, "test");
+          choose(48, 8, 1, 1);
           break;
         case 15:
-          Pos=24+(48*arm)-1;
+          choose(24, 23, 1, -1);
           break;
         case 31:
-          Pos=64+(48*arm)-1;
+          choose(64, 32, 1, 1);
           break;
         case 39:
-          Pos=239+(48*arm)-1;
+          choose(40, 239, 1, -1);
           break;
         case 47:
-          Pos=87+(48*arm)-1;
+          choose(88, 87, -1, 1);
           break;
         }
-      } else if (vorigeIndex%8 == Pos%8-1) {////STOPPED HERE, POSITIE VAN IF NIET GOED
+      }
+    } else if (Pos%8 == 0) {
+      if (vorigeIndex%8 == Pos%8+1) {
         switch(Pos%48) {
         case 0:
-          Pos=(48)+(48*arm)-1;
-          println(arm, "test");
+          choose(200, 199, 1, -1);
+          Pos+=1;
           break;
         case 8:
-          Pos=24+(48*arm)-1;
+          choose(7, 47, -1, -1);
+          Pos+=1;
           break;
         case 24:
-          Pos=64+(48*arm)-1;
+          choose(23, 15, -1, -1);
+          Pos+=1;
           break;
         case 32:
-          Pos=239+(48*arm)-1;
+          choose(16, 31, -1, 1);
+          Pos+=1;
           break;
         case 40:
-          Pos=87+(48*arm)-1;
+          choose(239, 39, -1, -1);
+          Pos+=1;
           break;
         }
-      }*/
+      }
     }
 
     if (ledHis.size() > size) {
@@ -90,7 +113,7 @@ class Chaser {
         //ledHMem[ledHis.get(i)%240]=color(255, 255, 255);
         //ledMem[ledHis.get(i)%240]=color(255, 255, 255);
         //leds[ledHis.get(i)%240].showLed(color(255, 255, 255));
-        
+
         ledHMem[ledHis.get(i)%240]=c;
         ledMem[ledHis.get(i)%240]=c;
         leds[ledHis.get(i)%240].showLed(c);
@@ -98,3 +121,10 @@ class Chaser {
     }
   }
 }
+/*
+if (random(0, 10)>5) {
+ Pos+= (48)-1-Pos%48;
+ } else {
+ Pos+= (8)-1-Pos%48;
+ }
+ */
