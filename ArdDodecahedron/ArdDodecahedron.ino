@@ -1,23 +1,17 @@
-
-import peasy.*;
-
 int time;
-int prevTime=-10000;
+int prevTime =- 10000;
 
 int counter;
 int aantaalChasers = 6;
 
-float phi = (1+sqrt(5
-))/2;
+float phi = (1+sqrt(5))/2;
+float Pos1[7][3];
+float Pos2[7][3];
+float Pos3[7][3];
+float Pos4[7][3];
+float Pos5[7][3];
 
-float Pos1[][] = new float[7][3];
-float Pos2[][] = new float[7][3];
-float Pos3[][] = new float[7][3];
-float Pos4[][] = new float[7][3];
-float Pos5[][] = new float[7][3];
-
-float[][][] posArray={Pos1, Pos2, Pos3, Pos4, Pos5};
-
+float posArray[5][7][3]={Pos1, Pos2, Pos3, Pos4, Pos5};
 
 float rotMat[][] =
   {{((pow(phi, 2)-1)/(2*phi)), ((-1)/(2*phi)), ((phi)/(2))}, 
@@ -75,6 +69,7 @@ void setup() {
   arm3 = new Arm(Pos3, #00FF00);
   arm4 = new Arm(Pos4, #0000FF);
   arm5 = new Arm(Pos5, #FF00FF);
+
   /*
   chaser1 = new Chaser(0, 0, 5, color(10, 255, 255));
    chaser2 = new Chaser(0, 1, 5, color(50, 255, 255));

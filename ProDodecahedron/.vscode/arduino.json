@@ -1,0 +1,5 @@
+{
+    "sketch": "..\\ArdDodecahedron\\ArdDodecahedron.ino",
+    "board": "arduino:avr:robotControl",
+    "programmer": "AVR ISP"
+}
