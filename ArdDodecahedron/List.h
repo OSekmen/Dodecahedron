@@ -11,7 +11,7 @@ class List {
         void print(){
             Serial.print("\n\nNieuwe Print:\n");
             Serial.println(this->size());
-            for(int i=0;i<240;i++){
+            for(int i=0;i<30;i++){
                 Serial.print(item[i]);Serial.print(" ");
                 if(i%30 == 29){
                     Serial.print("\n");

@@ -20,7 +20,9 @@ class Chaser {
       this->time = millis();
       if (this->time - prevTime >time) {
         vorigeIndex = ledHis.item[ledHis.size()-1];
+        Pos+=dir;
         ledHis.append(Pos);
+        ledHMem[Pos]=1;
         ledHis.print();
         
         if (Pos%8 == 7) {
@@ -80,9 +82,11 @@ class Chaser {
 
         if(ledHis.size() >len){
           ledHis.shift(Pos);
+          LedHMem[Pos]=0;
+          
         }
 
-        Pos+=dir;
+        
         //temporary bug fix. Remove when algorithm is implemented)
         if(Pos >=240){
           for(int i=0;i<240;i++){
@@ -118,7 +122,5 @@ Chaser::Chaser(int tak, int arm, int len, int h) {
   this->hue = hue;
   this->Pos = (8 * tak) + (48 * arm);
   ledHis.setLenght(len);
-  
-  
 }
 

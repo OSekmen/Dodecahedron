@@ -2,5 +2,5 @@
     "sketch": "..\\ArdDodecahedron\\ArdDodecahedron.ino",
     "board": "arduino:avr:micro",
     "programmer": "AVRISP mkII",
-    "port": "COM3"
+    "port": "COM5"
 }
