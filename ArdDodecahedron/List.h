@@ -18,7 +18,7 @@ class List {
                 }
             }
         }
-        void shift(int counter) {
+        void shift(int counter) {//shifts items in index to the left to keep size locked.
             for(int i = 0; i<counter;i++){
                 item[i] = item[i+1];
             }

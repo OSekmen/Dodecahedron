@@ -8,7 +8,7 @@ int counter;
 int aantaalChasers = 6;
 
 
-Chaser chaser1(0, 0, 5, 5);
+Chaser chaser1(0, 0, 10, 5);
 
 
 void setup() {
