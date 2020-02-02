@@ -9,13 +9,25 @@
                 "C:\\Program Files (x86)\\Arduino\\tools\\**",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
-                "C:\\Program Files (x86)\\Arduino\\libraries\\**",
+                "C:\\Program Files (x86)\\Arduino\\libraries",
                 "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\**"
             ],
+            "browse": {
+                "path": [
+                    "C:\\Users\\omers\\Documents\\Arduino\\libraries\\LedControl\\src",
+                    "C:\\Users\\omers\\Documents\\Arduino\\libraries/**",
+                    "C:\\Users\\omers\\Documents\\Projects\\Dodecahedron\\ArdDodecahedron",
+                    "C:\\Program Files (x86)\\Arduino\\tools\\**",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
+                    "C:\\Program Files (x86)\\Arduino\\libraries",
+                    "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\**"
+                ]
+            },
             "forcedInclude": [
                 "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
             ],
-            "intelliSenseMode": "msvc-x64",
+            "intelliSenseMode": "gcc-x64",
             "compilerPath": "C:\\TDM-GCC-64\\bin\\gcc.exe",
             "cStandard": "c11",
             "cppStandard": "c++17"

@@ -1,5 +1,3 @@
-void turnOff();
-
 class Chaser
 {
 

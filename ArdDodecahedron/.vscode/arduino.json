@@ -1,6 +1,6 @@
 {
-    "sketch": "..\\ArdDodecahedron\\ArdDodecahedron.ino",
+    "sketch": "ArdDodecahedron.ino",
     "board": "arduino:avr:micro",
     "programmer": "AVRISP mkII",
-    "port": "COM5"
+    "port": "COM3"
 }
