@@ -93,7 +93,6 @@ public void setup() {
   arm3 = new Arm(Pos3, 0xff00FF00);
   arm4 = new Arm(Pos4, 0xff0000FF);
   arm5 = new Arm(Pos5, 0xffFF00FF);
-  println(posArray[0]);
   /*
   chaser1 = new Chaser(0, 0, 5, color(10, 255, 255));
    chaser2 = new Chaser(0, 1, 5, color(50, 255, 255));

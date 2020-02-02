@@ -1,4 +1,3 @@
-
 class List {
   
     public:
@@ -9,12 +8,12 @@ class List {
             item[size()]=i;
         }
         void print(){
-            Serial.print("\n\nNieuwe Print:\n");
-            Serial.println(this->size());
+            //Serial.print("\n\nNieuwe Print:\n");
+            //Serial.println(this->size());
             for(int i=0;i<30;i++){
-                Serial.print(item[i]);Serial.print(" ");
+                //Serial.print(item[i]);Serial.print(" ");
                 if(i%30 == 29){
-                    Serial.print("\n");
+                    //Serial.print("\n");
                 }
             }
         }

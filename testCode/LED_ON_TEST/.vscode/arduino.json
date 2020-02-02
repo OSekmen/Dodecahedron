@@ -1,0 +1,5 @@
+{
+    "sketch": "LED_ON_TEST.ino",
+    "board": "arduino:avr:micro",
+    "port": "COM5"
+}
